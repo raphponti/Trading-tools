@@ -5,11 +5,11 @@ import yfinance as yf
 import pandas as pd
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
-import openai
+from openai import OpenAI
 import os
 
 # -------------------------------
-# Sidebar – User Inputs
+# Sidebar 
 # -------------------------------
 st.sidebar.header("Refining Margin Simulator")
 
@@ -102,11 +102,11 @@ st.download_button("📥 Download CSV", data=csv, file_name="crack_spread_data.c
 # AI Commentary
 # -------------------------------
 with st.expander("🧠 Market Commentary (AI Generated)"):
-    api_key = st.secrets["OPENAI_API_KEY"] if "OPENAI_API_KEY" in st.secrets else os.getenv("OPENAI_API_KEY")
+    api_key = st.secrets.get("OPENAI_API_KEY") or os.getenv("OPENAI_API_KEY")
     if not api_key:
         st.warning("Please set your OpenAI API key to enable this feature.")
     else:
-        openai.api_key = api_key
+        client = OpenAI(api_key=api_key)
         prompt = f"""
         The current crack spread is {latest_spread:.2f} USD/barrel.
         As a market strategist, explain why the spread is at this level.
@@ -114,9 +114,10 @@ with st.expander("🧠 Market Commentary (AI Generated)"):
         Then suggest 1–2 strategies a trader could explore in this environment.
         """
         try:
-            response = openai.ChatCompletion.create(
+            response = client.chat.completions.create(
                 model="gpt-4",
-                messages=[{"role": "user", "content": prompt}]
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.7
             )
             st.markdown(response.choices[0].message.content)
         except Exception as e:
