@@ -1,5 +1,4 @@
 import streamlit as st
-from streamlit_extras.switch_page_button import switch_page
 
 st.set_page_config(page_title="Commodity Tools", layout="centered")
 
@@ -7,17 +6,15 @@ st.title("📊 Commodity Analytics Tools")
 
 st.markdown("""
 Welcome to my interactive commodity market toolkit.  
-Select a tool below or use the sidebar on the left.
+Use the **sidebar on the left** or click below to open a tool.
 """)
 
-tool = st.selectbox("🔧 Choose a tool to launch:", [
-    "🏠 Home",
-    "🛢️ Crack Spread Monitor",
-    "🛢️ Brent-WTI Arbitrage (coming soon)",
-    "📈 Forward Curve Viewer (coming soon)"
-])
+st.markdown("### 🔧 Available Tools")
 
-if tool == "🛢️ Crack Spread Monitor":
-    switch_page("Crack_Spread_Monitor")
-elif tool != "🏠 Home":
-    st.warning("🚧 This tool is not yet available. Stay tuned!")
+st.markdown("""
+- [🛢️ Crack Spread Monitor](./Crack_Spread_Monitor)
+- 🛠️ Brent-WTI Arbitrage *(coming soon)*
+- 📈 Forward Curve Viewer *(coming soon)*
+""")
+
+st.info("More tools coming soon. Stay tuned!")
