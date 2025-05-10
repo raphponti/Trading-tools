@@ -18,7 +18,7 @@ I develop custom tools in Python to explore **commodity market dynamics**.
 # LinkedIn + CV buttons
 col1, col2 = st.columns([1, 2])
 with col1:
-    st.markdown("[📎 LinkedIn](https://www.linkedin.com/in/raphaelponticelli/)", unsafe_allow_html=True)
+    st.markdown("[📎 LinkedIn](https://www.linkedin.com/in/raphaël-ponticelli-100462180/)", unsafe_allow_html=True)
 
 with col2:
     with open("Ponticelli, Raphael - CV.pdf", "rb") as pdf_file:
