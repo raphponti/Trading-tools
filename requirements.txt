@@ -4,4 +4,4 @@ pandas
 plotly
 openai
 streamlit-extras
-
+seaborn
