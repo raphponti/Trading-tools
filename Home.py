@@ -5,17 +5,17 @@ from pathlib import Path
 # -------------------------------
 # Page config
 # -------------------------------
-st.set_page_config(page_title="Commodity Tools by Raphaël Ponticelli", layout="wide")
+st.set_page_config(page_title="Market Tools by Raphaël Ponticelli", layout="wide")
 
 # -------------------------------
 # Header
 # -------------------------------
-st.title("📊 Commodity Analytics Tools")
+st.title("📊 Market Analytics Tools")
 st.markdown("### by Raphaël Ponticelli")
 
 st.markdown("""
 Welcome! I'm a finance professional with experience at Société Générale, JP Morgan and Crédit Agricole.  
-I develop custom tools in Python to explore **commodity market dynamics**.
+I develop interactive Python tools to analyze **ETF flows**, **market dislocations**, and **commodity dynamics**.
 """)
 
 # -------------------------------
@@ -39,27 +39,45 @@ with col2:
 st.markdown("---")
 
 # -------------------------------
-# Tools Section
+# ETF Tools
 # -------------------------------
-st.subheader("🧰 Available Tools")
+st.subheader("📈 ETF Analytics")
 
-tool_cols = st.columns(3)
+etf_cols = st.columns(2)
 
-with tool_cols[0]:
+with etf_cols[0]:
+    st.markdown("### 💸 ETF Flow Tracker")
+    st.markdown("Visualize daily notional traded per ETF and detect unusual spikes.")
+    st.markdown("[▶️ Launch](./ETF_Flow_Tracker)")
+
+with etf_cols[1]:
+    st.markdown("### 📉 ETF vs Proxy Tracker")
+    st.markdown("Compare ETF prices to index proxies and detect NAV dislocations via Z-score.")
+    st.markdown("[▶️ Launch](./ETF_vs_Proxy_Tracker)")
+
+st.markdown("---")
+
+# -------------------------------
+# Commodity Tools
+# -------------------------------
+st.subheader("🛢️ Commodity Analytics")
+
+commo_cols = st.columns(3)
+
+with commo_cols[0]:
     st.markdown("### 🛢️ Crack Spread Monitor")
     st.markdown("Track gasoline–crude spread and simulate refining margins.")
     st.markdown("[▶️ Launch](./Crack_Spread_Monitor)")
 
-with tool_cols[1]:
+with commo_cols[1]:
     st.markdown("### 🛢️ Brent-WTI Arbitrage")
     st.markdown("Detect anomalies in benchmark spreads using Z-score analysis.")
     st.markdown("[▶️ Launch](./Brent_WTI_Arbitrage)")
 
-with tool_cols[2]:
+with commo_cols[2]:
     st.markdown("### 📈 Forward Curve Analyzer")
     st.markdown("Visualize CL1–CL12 to assess market structure (contango/backwardation).")
     st.markdown("🚧 Coming soon")
 
 st.markdown("---")
-
 st.info("More tools are in development. Stay tuned!")
